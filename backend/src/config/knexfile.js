@@ -1,4 +1,4 @@
-const config = require("./src/config");
+const config = require(".");
 
 module.exports = {
 	client: config.db.client,

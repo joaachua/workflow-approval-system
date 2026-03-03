@@ -5,7 +5,7 @@ const { cleanEnv, str, num, bool } = require("envalid");
 // dotenv-flow will load:
 // .env, .env.local, .env.{NODE_ENV}, .env.{NODE_ENV}.local (if present)
 dotenvFlow.config({
-	path: process.cwd(), // backend folder
+	path: require("path").resolve(__dirname, "../../"), // backend folder
 	silent: true,
 });
 

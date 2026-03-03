@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon app.js",
-    "staging": "NODE_ENV=staging node app.js",
-    "prod": "NODE_ENV=production node app.js",
+    "local": "NODE_ENV=localhost nodemon src/server.js",
+    "dev": "NODE_ENV=development nodemon src/server.js",
+    "staging": "NODE_ENV=staging node src/server.js",
+    "prod": "NODE_ENV=production node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

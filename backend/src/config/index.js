@@ -11,8 +11,8 @@ dotenvFlow.config({
 
 const env = cleanEnv(process.env, {
 	NODE_ENV: str({
-		choices: ["development", "staging", "production", "test"],
-		default: "development",
+		choices: ["development", "staging", "production", "localhost"],
+		default: "localhost",
 	}),
 
 	PORT: num({ default: 5000 }),
@@ -26,6 +26,9 @@ const env = cleanEnv(process.env, {
 	DB_NAME: str(),
 	DB_USER: str(),
 	DB_PASSWORD: str(),
+
+	DB_POOL_MIN: num({ default: 2 }),
+  	DB_POOL_MAX: num({ default: 10 }),
 
 	// Auth / Security
 	JWT_SECRET: str(),
@@ -49,6 +52,10 @@ module.exports = {
 		name: env.DB_NAME,
 		user: env.DB_USER,
 		password: env.DB_PASSWORD,
+		pool: {
+			min: env.DB_POOL_MIN,
+			max: env.DB_POOL_MAX,
+		},
 	},
 
 	auth: {

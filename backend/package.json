@@ -7,7 +7,14 @@
     "dev": "NODE_ENV=development nodemon src/server.js",
     "staging": "NODE_ENV=staging node src/server.js",
     "prod": "NODE_ENV=production node src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "migrate": "knex migrate:latest --knexfile ./src/config/knexfile.js",
+    "migrate:rollback": "knex migrate:rollback --knexfile ./src/config/knexfile.js",
+    "seed": "knex seed:run --knexfile ./src/config/knexfile.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:localdb": "NODE_ENV=localhost node tests/test-db.js",
+    "test:devdb": "NODE_ENV=development node tests/test-db.js",
+    "test:stagdb": "NODE_ENV=staging node tests/test-db.js",
+    "test:proddb": "NODE_ENV=production node tests/test-db.js"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +29,8 @@
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "knex": "^3.1.0",
-    "mysql2": "^3.18.0"
+    "mysql2": "^3.18.0",
+    "pg": "^8.19.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"

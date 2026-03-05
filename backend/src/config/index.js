@@ -1,14 +1,19 @@
 const dotenvFlow = require("dotenv-flow");
 const { cleanEnv, str, num, bool } = require("envalid");
+const path = require("path");
 
-// Load env files based on NODE_ENV (development/staging/production)
-// dotenv-flow will load:
-// .env, .env.local, .env.{NODE_ENV}, .env.{NODE_ENV}.local (if present)
+// Ensure NODE_ENV exists before dotenv-flow decides which files to load
+process.env.NODE_ENV = process.env.NODE_ENV || "localhost";
+
+// Load .env files FIRST
 dotenvFlow.config({
-	path: require("path").resolve(__dirname, "../../"), // backend folder
-	silent: true,
+	path: path.resolve(__dirname, "../../"), // backend folder
+	node_env: process.env.NODE_ENV, // use NODE_ENV
+	silent: false,
+	debug: true,
 });
 
+// THEN validate env (now it includes .env.localhost values)
 const env = cleanEnv(process.env, {
 	NODE_ENV: str({
 		choices: ["development", "staging", "production", "localhost"],
@@ -19,22 +24,20 @@ const env = cleanEnv(process.env, {
 	APP_URL: str({ default: "http://localhost:5000" }),
 	FRONTEND_URL: str({ default: "http://localhost:5173" }),
 
-	// Database
-	DB_CLIENT: str({ choices: ["mysql2", "pg"], default: "mysql2" }),
-	DB_HOST: str(),
-	DB_PORT: num({ default: 3306 }),
-	DB_NAME: str(),
-	DB_USER: str(),
-	DB_PASSWORD: str(),
+	// Database (PG defaults since you're using pg)
+	DB_CLIENT: str({ choices: ["mysql2", "pg"], default: "pg" }),
+	DB_HOST: str({ default: "127.0.0.1" }),
+	DB_PORT: num({ default: 5432 }),
+	DB_NAME: str({ default: "workflow_db" }),
+	DB_USER: str({ default: "joannachua" }),
+	DB_PASSWORD: str({ default: "" }),
 
 	DB_POOL_MIN: num({ default: 2 }),
-  	DB_POOL_MAX: num({ default: 10 }),
+	DB_POOL_MAX: num({ default: 10 }),
 
-	// Auth / Security
-	JWT_SECRET: str(),
+	JWT_SECRET: str({ default: "" }),
 	JWT_EXPIRES_IN: str({ default: "1d" }),
 
-	// Optional: enable extra logs
 	DEBUG: bool({ default: false }),
 });
 

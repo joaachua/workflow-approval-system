@@ -7,42 +7,34 @@
     "dev": "NODE_ENV=development nodemon src/server.js",
     "staging": "NODE_ENV=staging node src/server.js",
     "prod": "NODE_ENV=production node src/server.js",
-
     "migrate:local": "NODE_ENV=localhost knex migrate:latest --knexfile ./src/config/knexfile.js",
     "migrate:dev": "NODE_ENV=development knex migrate:latest --knexfile ./src/config/knexfile.js",
     "migrate:stag": "NODE_ENV=staging knex migrate:latest --knexfile ./src/config/knexfile.js",
     "migrate:prod": "NODE_ENV=production knex migrate:latest --knexfile ./src/config/knexfile.js",
-    
     "migrate-rollback:local": "NODE_ENV=localhost knex migrate:rollback --knexfile ./src/config/knexfile.js",
     "migrate-rollback:dev": "NODE_ENV=development knex migrate:rollback --knexfile ./src/config/knexfile.js",
     "migrate-rollback:stag": "NODE_ENV=staging knex migrate:rollback --knexfile ./src/config/knexfile.js",
     "migrate-rollback:prod": "NODE_ENV=production knex migrate:rollback --knexfile ./src/config/knexfile.js",
-
     "migrate-roll-all:local": "NODE_ENV=localhost knex migrate:rollback --all --knexfile ./src/config/knexfile.js",
     "migrate-roll-all:dev": "NODE_ENV=development knex migrate:rollback --all --knexfile ./src/config/knexfile.js",
     "migrate-roll-all:stag": "NODE_ENV=staging knex migrate:rollback --all --knexfile ./src/config/knexfile.js",
     "migrate-roll-all:prod": "NODE_ENV=production knex migrate:rollback --all --knexfile ./src/config/knexfile.js",
-
     "migrate-status:local": "NODE_ENV=localhost knex migrate:status --knexfile ./src/config/knexfile.js",
     "migrate-status:dev": "NODE_ENV=development knex migrate:status --knexfile ./src/config/knexfile.js",
     "migrate-status:stag": "NODE_ENV=staging knex migrate:status --knexfile ./src/config/knexfile.js",
     "migrate-status:prod": "NODE_ENV=production knex migrate:status --knexfile ./src/config/knexfile.js",
-
     "migrate-make:local": "NODE_ENV=localhost knex migrate:make --knexfile ./src/config/knexfile.js",
     "migrate-make:dev": "NODE_ENV=development knex migrate:make --knexfile ./src/config/knexfile.js",
     "migrate-make:stag": "NODE_ENV=staging knex migrate:make --knexfile ./src/config/knexfile.js",
     "migrate-make:prod": "NODE_ENV=production knex migrate:make --knexfile ./src/config/knexfile.js",
-
     "seed:local": "NODE_ENV=localhost knex seed:run --knexfile ./src/config/knexfile.js",
     "seed:dev": "NODE_ENV=development knex seed:run --knexfile ./src/config/knexfile.js",
     "seed:stag": "NODE_ENV=staging knex seed:run --knexfile ./src/config/knexfile.js",
     "seed:prod": "NODE_ENV=production knex seed:run --knexfile ./src/config/knexfile.js",
-
     "seed-make:local": "NODE_ENV=localhost knex seed:make --knexfile ./src/config/knexfile.js",
     "seed-make:dev": "NODE_ENV=development knex seed:make --knexfile ./src/config/knexfile.js",
     "seed-make:stag": "NODE_ENV=staging knex seed:make --knexfile ./src/config/knexfile.js",
     "seed-make:prod": "NODE_ENV=production knex seed:make --knexfile ./src/config/knexfile.js",
-    
     "test-db:local": "NODE_ENV=localhost node tests/test-db.js",
     "test-db:dev": "NODE_ENV=development node tests/test-db.js",
     "test-db:stag": "NODE_ENV=staging node tests/test-db.js",
@@ -61,8 +53,9 @@
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "knex": "^3.1.0",
-    "mysql2": "^3.18.0",
-    "pg": "^8.19.0"
+    "pg": "^8.19.0",
+    "swagger-ui-express": "^5.0.1",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"

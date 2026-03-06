@@ -1,0 +1,23 @@
+openapi: 3.0.3
+
+info:
+  title: Workflow Approval System API
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:5001
+
+paths:
+  /api/users:
+    $ref: "./paths/users.yaml#/users"
+  /api/users/{id}:
+    $ref: "./paths/users.yaml#/userById"
+
+components:
+  schemas:
+    User:
+      $ref: "./schemas/user.yaml"
+    Pagination:
+      $ref: "./schemas/pagination.yaml"
+    ErrorResponse:
+      $ref: "./schemas/error.yaml"

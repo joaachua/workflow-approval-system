@@ -1,0 +1,21 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1
+
+  username:
+    type: string
+    example: joannachua
+
+  full_name:
+    type: string
+    example: Joanna Chua
+
+  email:
+    type: string
+    example: joanna@example.com
+
+  created_at:
+    type: string
+    format: date-time
